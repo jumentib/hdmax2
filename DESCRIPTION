@@ -1,0 +1,24 @@
+Package: hdmax2
+Title: High Dimensionnal Mediation Analysis
+Version: 0.0.0.9000
+Date: 2022-02-09
+Author: Basile Jumentier <basile.jumentier@gmail.com>
+Maintainer: Basile Jumentier <basile.jumentier@gmail.com>
+Description: The package contains a set of functions allowing to perform mediation analyzes in very high dimension. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    Biostrings,
+    dplyr,
+    fdrtool,
+    IRanges,
+    lfmm,
+    mediation,
+    parallel,
+    stats,
+    utils
+Depends: 
+    R (>= 2.10)
