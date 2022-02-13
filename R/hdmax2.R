@@ -449,7 +449,28 @@ combp2 <- function (data, dist.cutoff = 1000, bin.size = 310, seed = 0.01, nCore
 ##' @author Basile Jumentier
 ##' @examples
 ##'
-##' # see vignette
+##' # library(hdma2)
+##' #
+##' # Run mEWAS
+##' #
+##' # res <- mEWAS(X = example$X, Y = example$Y, M = example$M, K = 5)
+##' #
+##' # Keep latent factors for mediation
+##' #
+##' # U <- res$U
+##' #
+##' # Run max2
+##' #
+##' # res <- max2(pval1 = res$pValue[, 1], pval2 = res$pValue[, 2])
+##' #
+##' # lauch AMR_search
+##' #
+##' # res <- AMR_search(chr = example$annotation$chr,
+##' #                   start = example$annotation$start,
+##' #                   end = example$annotation$end,
+##' #                   pval = res$pval,
+##' #                   cpg = example$annotation$cpg, nCores = 1)
+##' #
 AMR_search <- function(chr, start, end, pval, cpg, ...) {
 
   tmp <- data.frame(chr, start, end, pval, cpg)
@@ -490,7 +511,31 @@ AMR_search <- function(chr, start, end, pval, cpg, ...) {
 ##' @author Basile Jumentier
 ##' @examples
 ##'
-##' # see vignette
+##' # library(hdma2)
+##' #
+##' # Run mEWAS
+##' #
+##' # res <- mEWAS(X = example$X, Y = example$Y, M = example$M, K = 5)
+##' #
+##' # Keep latent factors for mediation
+##' #
+##' # U <- res$U
+##' #
+##' # Run max2
+##' #
+##' # res <- max2(pval1 = res$pValue[, 1], pval2 = res$pValue[, 2])
+##' #
+##' # lauch AMR_search
+##' #
+##' # res <- AMR_search(chr = example$annotation$chr,
+##' #                   start = example$annotation$start,
+##' #                   end = example$annotation$end,
+##' #                   pval = res$pval,
+##' #                   cpg = example$annotation$cpg, nCores = 1)
+##' #
+##' # lauch AMR_build
+##' #
+##' # tmp <- AMR_build(res, methylation = example$M, nb_cpg = 2)
 AMR_build <- function(res, methylation, nb_cpg = 2) {
 
   data <- res$data
@@ -586,7 +631,7 @@ AMR_build <- function(res, methylation, nb_cpg = 2) {
 ##' We also return, We also return the results of the linear regressions.
 ##' The xm table corresponds to the regressions of X on DMRi and
 ##' the my table to the regressions of Y on AMRi knowing X.
-##' With DMRi corresponding to the different AMRs tested.
+##' With AMRi corresponding to the different AMRs tested.
 ##'
 ##' @details
 ##'
@@ -598,7 +643,35 @@ AMR_build <- function(res, methylation, nb_cpg = 2) {
 ##' @author Basile Jumentier
 ##' @examples
 ##'
-##' # see vignette
+##' # library(hdma2)
+##' #
+##' # Run mEWAS
+##' #
+##' # res <- mEWAS(X = example$X, Y = example$Y, M = example$M, K = 5)
+##' #
+##' # Keep latent factors for mediation
+##' #
+##' # U <- res$U
+##' #
+##' # Run max2
+##' #
+##' # res <- max2(pval1 = res$pValue[, 1], pval2 = res$pValue[, 2])
+##' #
+##' # lauch AMR_search
+##' #
+##' # res <- AMR_search(chr = example$annotation$chr,
+##' #                   start = example$annotation$start,
+##' #                   end = example$annotation$end,
+##' #                   pval = res$pval,
+##' #                   cpg = example$annotation$cpg, nCores = 1)
+##' #
+##' # lauch AMR_build
+##' #
+##' # tmp <- AMR_build(res, methylation = example$M, nb_cpg = 2)
+##' #
+##' # mediation for each AMR
+##' #
+##' # res <- wrap_mediation_AMR(X = example$X, Y = example$Y, AMR = tmp$AMR_mean, U = U, sims = 3)
 wrap_mediation_AMR <- function(X, Y, AMR, U = NULL, sims = 3) {
 
   DMR <- AMR
@@ -682,7 +755,9 @@ wrap_mediation_AMR <- function(X, Y, AMR, U = NULL, sims = 3) {
 ##' @author Basile Jumentier
 ##' @examples
 ##'
-##' # see vignette
+##' #
+##' # res <- est_oie(X, m, Y, C, 10)
+##'
 est_oie <- function(X, m, Y, C, boots = 100) {
 
   # bootstrap
