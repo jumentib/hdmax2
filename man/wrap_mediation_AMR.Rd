@@ -30,7 +30,7 @@ confidence interval and mediation pValue.
 We also return, We also return the results of the linear regressions.
 The xm table corresponds to the regressions of X on DMRi and
 the my table to the regressions of Y on AMRi knowing X.
-With DMRi corresponding to the different AMRs tested.
+With AMRi corresponding to the different AMRs tested.
 }
 \description{
 Estimate various quantities for causal mediation analysis for each
@@ -45,7 +45,35 @@ test their significance.
 }
 \examples{
 
-# see vignette
+# library(hdma2)
+#
+# Run mEWAS
+#
+# res <- mEWAS(X = example$X, Y = example$Y, M = example$M, K = 5)
+#
+# Keep latent factors for mediation
+#
+# U <- res$U
+#
+# Run max2
+#
+# res <- max2(pval1 = res$pValue[, 1], pval2 = res$pValue[, 2])
+#
+# lauch AMR_search
+#
+# res <- AMR_search(chr = example$annotation$chr,
+#                   start = example$annotation$start,
+#                   end = example$annotation$end,
+#                   pval = res$pval,
+#                   cpg = example$annotation$cpg, nCores = 1)
+#
+# lauch AMR_build
+#
+# tmp <- AMR_build(res, methylation = example$M, nb_cpg = 2)
+#
+# mediation for each AMR
+#
+# res <- wrap_mediation_AMR(X = example$X, Y = example$Y, AMR = tmp$AMR_mean, U = U, sims = 3)
 }
 \author{
 Basile Jumentier

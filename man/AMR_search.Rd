@@ -31,7 +31,28 @@ aggregated methylated regions (AMRs).
 }
 \examples{
 
-# see vignette
+# library(hdma2)
+#
+# Run mEWAS
+#
+# res <- mEWAS(X = example$X, Y = example$Y, M = example$M, K = 5)
+#
+# Keep latent factors for mediation
+#
+# U <- res$U
+#
+# Run max2
+#
+# res <- max2(pval1 = res$pValue[, 1], pval2 = res$pValue[, 2])
+#
+# lauch AMR_search
+#
+# res <- AMR_search(chr = example$annotation$chr,
+#                   start = example$annotation$start,
+#                   end = example$annotation$end,
+#                   pval = res$pval,
+#                   cpg = example$annotation$cpg, nCores = 1)
+#
 }
 \author{
 Basile Jumentier

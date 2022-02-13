@@ -28,7 +28,9 @@ A novelty of HDMAX2 is to evaluate a cumulated indirect effect for all CpGs or A
 }
 \examples{
 
-# see vignette
+#
+# res <- est_oie(X, m, Y, C, 10)
+
 }
 \author{
 Basile Jumentier
