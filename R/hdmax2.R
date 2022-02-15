@@ -772,7 +772,7 @@ est_oie <- function(X, m, Y, C, boots = 100) {
     B <- as.data.frame(summary(mod1)$coeff[3:(ncol(m) + 2), ])
 
     # effet A X -> M
-    mod2 <- lm(m[samp, ] ~ X[samp] + C[samp])
+    mod2 <- lm(m[samp, ] ~ X[samp] + C[samp, ])
     A <- t(sapply(summary(mod2), function(x) x$coeff[2, ]))
     A <- data.frame(CpG = rownames(A), A)
     # A <- separate(A, CpG, c("0", "CpG"), " ")[, -1]
